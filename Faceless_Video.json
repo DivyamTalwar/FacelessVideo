@@ -1,5 +1,5 @@
 {
-  "name": "Faceless Video",
+  "name": "FacelessVideo",
   "nodes": [
     {
       "parameters": {
@@ -15,17 +15,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1220,
-        40
+        -1140,
+        -520
       ],
-      "id": "520bef44-17b4-4b1d-b23a-04f6462d6e28",
-      "name": "Generate Image",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "md5n1H9xDvznGBAK",
-          "name": "PIAPI"
-        }
-      }
+      "id": "f1b76fa4-9298-41b9-95e5-5bdeb34745d9",
+      "name": "Generate Image"
     },
     {
       "parameters": {
@@ -37,33 +31,27 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1580,
-        40
+        -760,
+        -520
       ],
-      "id": "dc348129-2877-4d64-8e89-d9e462057905",
-      "name": "Get Images",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "md5n1H9xDvznGBAK",
-          "name": "PIAPI"
-        }
-      }
+      "id": "558f6943-7400-4f03-a1fb-4f70274b34eb",
+      "name": "Get Images"
     },
     {
       "parameters": {
         "promptType": "define",
         "text": "=Scene: {{ $('Get Images').item.json.data.input.prompt }}",
         "options": {
-          "systemMessage": "=# Overview\nYou are a Master Sound Prompt Generator.\nYour task is to create vivid, immersive sound prompts based on a given scene. These prompts will be used to generate background audio that matches the mood and environment of the scene.\n\n## Instructions\n- Generate a one- to two-sentence prompt that captures the ambiance, tone, and key sound elements.\n- Use rich, evocative language to describe the background atmosphere, highlighting specific sounds (e.g., footsteps on cobblestone, distant chatter, wind rustling leaves, faint music, industrial hum).\n- Focus on the background audio — not dialogue, narration, or foreground sound effects.\n- Match the emotion and setting of the scene, whether it's calm, chaotic, eerie, festive, or serene.\n- Avoid vague descriptions; be specific and sensory-driven to maximize immersion.\n- Never include quotation marks (\"\") or newlines (\\n) in the output.\n\n## Output\nReturn only the crafted sound prompt text, ready to be used for an audio generation model.\n"
+          "systemMessage": "=# Master Sound Prompt Generator\n\n## Persona\nYou are a world-class sound designer and audio engineer, a master of creating immersive and evocative soundscapes. You have a keen ear for detail and a deep understanding of how sound can be used to create mood, atmosphere, and emotion.\n\n## Overview\nYour primary function is to take a given scene description and generate a vivid, immersive sound prompt that can be used to create background audio. The resulting audio should perfectly match the mood, setting, and key elements of the scene.\n\n## Instructions\n1.  **Analyze the Scene**: Meticulously analyze the provided scene to understand its mood (e.g., calm, chaotic, eerie), setting (e.g., bustling city, quiet forest, futuristic laboratory), and key elements (e.g., rain, footsteps, machinery).\n2.  **Generate Prompt**: Craft a one- to two-sentence prompt that captures the complete ambiance, tone, and key sound elements of the scene. The prompt should be a rich and evocative description of the background atmosphere.\n3.  **Be Specific and Detailed**: Use descriptive and precise language to highlight specific sounds. For example, instead of 'city sounds,' use 'the distant wail of sirens, the gentle hum of traffic, and the faint chatter of pedestrians.'\n4.  **Focus on Background Audio**: Your prompt must focus on the background audio and ambient sounds, not dialogue, narration, or prominent foreground sound effects.\n5.  **Match the Emotion**: Ensure the sound prompt perfectly aligns with the emotion and setting of the scene, whether it's serene, tense, festive, or melancholic.\n\n## Output Instructions\n- Your ONLY output should be the crafted sound prompt text.\n- Do not include quotation marks, newlines, or any other extraneous content in the output."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.7,
       "position": [
-        1840,
-        40
+        -500,
+        -520
       ],
-      "id": "12adad38-bdb9-4536-83c9-3fb49b0355cc",
+      "id": "d70a92a0-c45a-4918-819f-d84162c05967",
       "name": "Sound Agent"
     },
     {
@@ -90,17 +78,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2200,
-        40
+        -140,
+        -520
       ],
-      "id": "bc0ea21f-f5d3-4bd4-90ac-8a7e2ff2169e",
-      "name": "Generate Audio",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "XEb5ZjwtTIIogMMx",
-          "name": "ElevenLabs"
-        }
-      }
+      "id": "92ecdd83-f135-413a-9951-acaae1ec7a16",
+      "name": "Generate Audio"
     },
     {
       "parameters": {
@@ -122,17 +104,11 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        2380,
-        40
+        40,
+        -520
       ],
-      "id": "d09f0018-5ce4-49c7-87a7-cd1f629e3ced",
-      "name": "Upload to Drive",
-      "credentials": {
-        "googleDriveOAuth2Api": {
-          "id": "V2ewjiHO0o6xhQ2R",
-          "name": "nateherk88@gmail.com"
-        }
-      }
+      "id": "5ded6e96-df3d-4461-9b27-831bea6f7eef",
+      "name": "Upload to Drive"
     },
     {
       "parameters": {
@@ -144,10 +120,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        1860,
-        380
+        -480,
+        -180
       ],
-      "id": "b2d5a271-16d1-4efe-badb-9444ee1e1d13",
+      "id": "0dd80ef9-104a-4a45-a400-724fe4a84203",
       "name": "Merge"
     },
     {
@@ -171,10 +147,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2260,
-        380
+        -80,
+        -180
       ],
-      "id": "2290259f-360d-42b9-ab23-e122e2a5443b",
+      "id": "8d530863-ea58-4317-b894-229ee943dcbe",
       "name": "Render Video"
     },
     {
@@ -184,10 +160,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        2460,
-        380
+        120,
+        -180
       ],
-      "id": "54cc20c4-01a1-4c01-8007-72a5bdcea1c4",
+      "id": "35aafe94-7855-49b7-8c75-2e71b1fb5cd4",
       "name": "25 Seconds",
       "webhookId": "d5cd29e8-d3f7-491c-a6b6-2d705aa47931"
     },
@@ -199,10 +175,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1860,
-        600
+        -480,
+        40
       ],
-      "id": "8bf72e15-1a7b-4031-956a-6be1fba75fb4",
+      "id": "51e98246-3091-4261-9c33-ff9383992153",
       "name": "Download Video"
     },
     {
@@ -214,11 +190,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        400,
-        -60
+        -1960,
+        -620
       ],
       "typeVersion": 1,
-      "id": "6affcc6c-fcad-4b6b-b379-129f438bbbb1",
+      "id": "56f927b2-e7d1-4e09-9e3d-062f62782c2b",
       "name": "Sticky Note3",
       "disabled": true
     },
@@ -231,11 +207,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1160,
-        -60
+        -1200,
+        -620
       ],
       "typeVersion": 1,
-      "id": "3ee9d1ef-6117-4426-8e26-90316ad38db7",
+      "id": "feeaf601-ffa0-4aef-835a-28f70d16abd2",
       "name": "Sticky Note4"
     },
     {
@@ -247,11 +223,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1780,
-        -60
+        -560,
+        -620
       ],
       "typeVersion": 1,
-      "id": "967cf09a-3d9a-435c-b12a-82998fdd06d6",
+      "id": "c6f46e85-ff30-4e39-b4ed-bfc7c4e45500",
       "name": "Sticky Note"
     },
     {
@@ -262,11 +238,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1780,
-        280
+        -560,
+        -280
       ],
       "typeVersion": 1,
-      "id": "19463bad-eb6e-40fd-86a0-1e02fb9138f2",
+      "id": "78c4ffbe-e0f4-44d9-9770-7a5a977271e3",
       "name": "Sticky Note2"
     },
     {
@@ -288,17 +264,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1580,
-        320
+        -760,
+        -240
       ],
-      "id": "809a119f-219f-433f-92fa-8a0695995cd9",
-      "name": "Get Videos",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "4d9CJQhEAnG8Jjks",
-          "name": "Runway"
-        }
-      }
+      "id": "a3a9c17c-1b62-425d-94d4-74bcbc33bccf",
+      "name": "Get Videos"
     },
     {
       "parameters": {
@@ -345,17 +315,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1240,
-        320
+        -1120,
+        -240
       ],
-      "id": "01b650f5-fb9e-426e-85ad-2958c5974811",
-      "name": "Generate Videos",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "4d9CJQhEAnG8Jjks",
-          "name": "Runway"
-        }
-      }
+      "id": "a55acc8e-0d80-4538-a8d0-d7a88a431ff3",
+      "name": "Generate Videos"
     },
     {
       "parameters": {
@@ -366,11 +330,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1160,
-        220
+        -1200,
+        -340
       ],
       "typeVersion": 1,
-      "id": "ffd0275b-9164-434b-a400-c68c44916cad",
+      "id": "0ed93fc7-f692-4bb3-bcd2-e95de497a86e",
       "name": "Sticky Note5"
     },
     {
@@ -380,10 +344,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2060,
-        380
+        -280,
+        -180
       ],
-      "id": "8760be1a-328d-4b98-bb9d-a4d8ef5da96f",
+      "id": "5139d0a3-7aec-4460-a627-b512d2cfc870",
       "name": "Split Out Parts"
     },
     {
@@ -406,17 +370,11 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        2580,
-        40
+        240,
+        -520
       ],
-      "id": "fc3c88ad-c193-4ac8-a1ed-91871e82b1ec",
-      "name": "Share File",
-      "credentials": {
-        "googleDriveOAuth2Api": {
-          "id": "V2ewjiHO0o6xhQ2R",
-          "name": "nateherk88@gmail.com"
-        }
-      }
+      "id": "fafedfd9-b76c-47cf-8b2d-d0df7c0c21df",
+      "name": "Share File"
     },
     {
       "parameters": {
@@ -434,31 +392,11 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        460,
-        100
+        -1900,
+        -460
       ],
-      "id": "8abd1438-747b-4a26-8a85-998be7dd9f9f",
+      "id": "d77276ef-ac81-4f8c-aaee-65ee45a45e35",
       "name": "When Executed by Another Workflow"
-    },
-    {
-      "parameters": {
-        "model": "openai/gpt-4.1-mini",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
-      "typeVersion": 1,
-      "position": [
-        640,
-        280
-      ],
-      "id": "d4309db3-4b01-4b46-a5c6-044b2c890f8b",
-      "name": "GPT 4.1 mini",
-      "credentials": {
-        "openRouterApi": {
-          "id": "1dQlOKKWiigrH9O9",
-          "name": "OpenRouter account"
-        }
-      }
     },
     {
       "parameters": {
@@ -467,10 +405,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
       "position": [
-        840,
-        280
+        -1520,
+        -260
       ],
-      "id": "a92a2ad5-72ae-4e12-b85c-845188c1f3ed",
+      "id": "33a5632e-17b2-4290-8cc9-90057c3a2a78",
       "name": "4 Parts"
     },
     {
@@ -479,16 +417,16 @@
         "text": "=Video Topic: {{ $json.videoTopic }}",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "=# Overview\nYou are a Master Visual Story Structuring Agent.\nYour task is to take a given short video topic and split it into four parts that together form a cohesive, vivid story, optimized for text-to-image generation.\n\n## Instructions:\n- You must create exactly four parts: Part 1, Part 2, Part 3, and Part 4.\n- Describe the subject of the story in the EXACT same way in all four parts. Each part should be consistent.\n- Each part should build upon the previous, creating a complete visual story by the end.\n- Every part must be written as a high-quality, richly detailed image prompt, following professional standards for models like Flux or similar.\n- Describe characters, settings, outfits, actions, and background elements vividly and precisely.\n- Use rich, imaginative language to maximize visual fidelity.\n- Avoid generic terms — always opt for specific and colorful descriptions.\n- No quotation marks (\"\") or newlines (\\n) should be included in the output.\n- Keep the description natural and seamless so it can be fed directly into a text-to-image model.\n\n## Key Elements to Include in Each Part:\n- Clear description of main subjects (appearance, outfits, facial expressions, poses)\n- Accessories or objects that add to the scene\n- A vivid background that matches the theme and enhances the overall story\n- Consistency and natural progression from part to part\n\n## Output Format:\nReturn your response structured into four fields:\n- Part 1: [Vivid image prompt for Part 1]\n- Part 2: [Vivid image prompt for Part 2]\n- Part 3: [Vivid image prompt for Part 3]\n- Part 4: [Vivid image prompt for Part 4]\n\nOnly output the fields listed above.\nMake sure the story across all four parts feels cohesive, visually rich, and cinematic."
+          "systemMessage": "=# Master Visual Story Structuring Agent\n\n## Persona\nYou are a master visual storyteller and cinematic artist, an expert in structuring compelling narratives for short-form video content. You have a keen eye for detail and a deep understanding of how to create a cohesive and engaging visual story.\n\n## Overview\nYour primary function is to take a given short video topic and break it down into four distinct, sequential parts that form a vivid and coherent visual narrative. These prompts will be used for text-to-image generation and should be crafted with the utmost care and creativity.\n\n## Instructions\n1.  **Create Four Distinct Parts**: You must create exactly four parts, labeled `Part 1`, `Part 2`, `Part 3`, and `Part 4`. Each part should represent a key moment in the visual story.\n2.  **Maintain Narrative Consistency**: The subject of the story, including characters and settings, must be described consistently across all four parts to ensure a seamless visual flow.\n3.  **Build a Cohesive Narrative**: Each part must logically and creatively build upon the previous one, creating a complete and satisfying visual story by the end. The progression should be natural and engaging.\n4.  **Be Exceptionally Detailed**: Each part must be a high-quality, richly detailed image prompt. Describe characters, settings, outfits, actions, emotions, and background elements with vivid and precise language.\n5.  **Use Rich and Evocative Language**: Use imaginative, cinematic, and descriptive language to maximize visual fidelity and emotional impact. Avoid generic or vague terms.\n\n## Key Elements to Include in Each Part\n-   **Main Subjects**: Provide clear and detailed descriptions of appearance, outfits, facial expressions, and poses.\n-   **Environment**: Create a vivid and immersive background that enhances the theme and story.\n-   **Narrative Progression**: Ensure a clear and logical progression from one part to the next, with each part contributing to the overall story arc.\n\n## Output Format\n- Your response must be structured into four fields: `Part 1`, `Part 2`, `Part 3`, and `Part 4`.\n- The content of each field should be a detailed and vivid image prompt.\n- Do not include quotation marks or newlines in the output."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.9,
       "position": [
-        640,
-        100
+        -1720,
+        -460
       ],
-      "id": "c595122c-6cc4-4fe8-bb74-7f70c3828d82",
+      "id": "02d3722c-7526-4fc9-a2a9-a1b511755e56",
       "name": "Image Prompt Agent"
     },
     {
@@ -499,31 +437,24 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        960,
-        100
+        -1400,
+        -460
       ],
-      "id": "83e5547e-7aa2-4e11-9098-e0eb36b1ea22",
+      "id": "9fec43d0-4286-4a06-82ed-6765e3e81f01",
       "name": "Split Out"
     },
     {
       "parameters": {
-        "model": "openai/gpt-4.1-mini",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        2080,
-        140
+        -260,
+        -420
       ],
-      "id": "f248b1cd-9bb0-4d8b-8f95-2e416dec8f05",
-      "name": "GPT-4.1 mini",
-      "credentials": {
-        "openRouterApi": {
-          "id": "1dQlOKKWiigrH9O9",
-          "name": "OpenRouter account"
-        }
-      }
+      "id": "1abd8d98-ece5-4ee1-9de4-cc8b0e9aba93",
+      "name": "GPT-4.1 mini"
     },
     {
       "parameters": {
@@ -535,18 +466,12 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2040,
-        600
+        -300,
+        40
       ],
-      "id": "93a861f3-2818-4572-a770-8713630417ae",
+      "id": "af7216b1-ac82-4427-9a02-27c5893d6b87",
       "name": "Send Video",
-      "webhookId": "cdeb2987-d275-480b-8532-f69bbed64999",
-      "credentials": {
-        "telegramApi": {
-          "id": "9jQWan3cOz3tE62s",
-          "name": "Telegram account 2"
-        }
-      }
+      "webhookId": "cdeb2987-d275-480b-8532-f69bbed64999"
     },
     {
       "parameters": {
@@ -572,17 +497,11 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        2240,
-        600
+        -100,
+        40
       ],
-      "id": "11c27ec1-cc49-4f87-b599-d07c5c634473",
-      "name": "Title",
-      "credentials": {
-        "openAiApi": {
-          "id": "WnxUhaEPMn5hIsEp",
-          "name": "Demo 4/2"
-        }
-      }
+      "id": "51024740-20b7-4a69-9422-aa85da9f887c",
+      "name": "Title"
     },
     {
       "parameters": {
@@ -675,17 +594,11 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
       "position": [
-        2600,
-        600
+        260,
+        40
       ],
-      "id": "6b249042-b98f-4859-8bc4-6b4f5ade3c04",
-      "name": "Log Video",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "s7PIUa59FFmDLn1e",
-          "name": "Demo 4/2"
-        }
-      }
+      "id": "f22b44ba-3910-450e-9a72-4853546b9c2b",
+      "name": "Log Video"
     },
     {
       "parameters": {
@@ -694,10 +607,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        1400,
-        40
+        -940,
+        -520
       ],
-      "id": "35066842-b5fb-4e55-873f-1826be419066",
+      "id": "157c219a-c2fe-452d-bc28-89b01bc0b6f8",
       "name": "90 Seconds",
       "webhookId": "ffdc5132-c0fe-44f6-af2b-4b3bb8894153"
     },
@@ -708,12 +621,31 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        1400,
-        320
+        -940,
+        -240
       ],
-      "id": "f3cc877c-0d1f-4317-806b-91633e85d143",
+      "id": "1d160d37-ac57-448a-83bc-60cd452ac0df",
       "name": "90_Seconds",
       "webhookId": "3ce99001-8f5a-4c0a-9b25-e3e261fcc778"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -1740,
+        -260
+      ],
+      "id": "428b8158-3706-4b97-a4e6-7cf63048f2b7",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "7aIF3aESkDnA7Y7u",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -891,17 +823,6 @@
         ]
       ]
     },
-    "GPT 4.1 mini": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Image Prompt Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "4 Parts": {
       "ai_outputParser": [
         [
@@ -989,17 +910,28 @@
           }
         ]
       ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Image Prompt Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "2e4fb4c0-d1b3-49ef-beec-61b51ec3a65d",
+  "versionId": "7df0c814-61c2-4423-8551-d4091541e7d3",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "95e5a8c2e51c83e33b232ea792bbe3f063c094c33d9806a5565cb31759e1ad39"
+    "instanceId": "087ba087470ae4b97567263c5dadc2f24d1f6a27717504fc17a09d11869434c6"
   },
-  "id": "7HwL0nnjhjdXJ3FY",
+  "id": "dQsjpXOwiEtTp8mc",
   "tags": []
 }
